@@ -53,6 +53,12 @@ const LoginView = () => {
                     </div>
                     <button type="submit" className="bg-black text-white w-full p-2.5 border-none">{isLoading ? 'Loading...' : 'Login'}</button>
                 </form>
+                <hr className="my-5" />
+                <div className="w-full">
+                    <button type="button" onClick={() => signIn('google', {callbackUrl, redirect: false})} className="bg-black text-white w-full p-2.5 border-none items-center text-center flex justify-center gap-5">
+                    <i className='bx bxl-google text-[24px]' />Login With Google
+                    </button>
+                </div>
             </div>
             <p className="">Don{"'"}t have an account? Sign up <Link href={'/auth/register'} className="text-[#23bebe]">here</Link></p>
         </div>
