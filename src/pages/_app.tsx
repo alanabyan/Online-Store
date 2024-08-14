@@ -1,4 +1,6 @@
+import Navbar from '@/components/layouts/Navbar'
 import '@/styles/globals.css'
+import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
 import { Poppins } from 'next/font/google'
 
@@ -7,10 +9,13 @@ const lato = Poppins({
   weight: ['100','200', '300', '400','500', '600', '700', '800', '900'],
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps: {session, ...pageProps}, }: AppProps) {
   return (
-    <div className={lato.className}>
-      <Component {...pageProps} />
-    </div>
+   <SessionProvider session={session}>
+      <div className={lato.className}>
+        <Navbar />
+        <Component {...pageProps} />
+      </div>
+   </SessionProvider>
   )
 }
