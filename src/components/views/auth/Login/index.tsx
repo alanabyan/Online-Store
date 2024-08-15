@@ -1,4 +1,6 @@
 
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import { signIn } from "next-auth/react";
 import Link from "next/link"
 import { useRouter } from "next/router";
@@ -43,21 +45,15 @@ const LoginView = () => {
             {error && <p className="text-[#fd3131] mb-2.5">{error}</p>}
             <div className="w-[30%] p-5 mb-5 shadow-[0_0_3px_rgba(0,0,0,0.5)]">
                 <form onSubmit={handleSubmit}>
-                    <div className="flex flex-col my-5 mx-0">
-                        <label htmlFor="email">Email</label>
-                        <input name="email" id="email" type="email" className="p-2.5 bg-[#eee] mt-[5px] border-none outline-none" />
-                    </div>
-                    <div className="flex flex-col my-5 mx-0">
-                        <label htmlFor="password">Password</label>
-                        <input name="password" id="password" type="password" className="p-2.5 bg-[#eee] mt-[5px] border-none outline-none" />
-                    </div>
-                    <button type="submit" className="bg-black text-white w-full p-2.5 border-none">{isLoading ? 'Loading...' : 'Login'}</button>
+                    <Input label="Email" name="email" type="email" />
+                    <Input label="Password" name="password" type="password" />
+                    <Button type="submit">{isLoading ? 'Loading...' : 'Login'}</Button>
                 </form>
                 <hr className="my-5" />
                 <div className="w-full">
-                    <button type="button" onClick={() => signIn('google', {callbackUrl, redirect: false})} className="bg-black text-white w-full p-2.5 border-none items-center text-center flex justify-center gap-5">
-                    <i className='bx bxl-google text-[24px]' />Login With Google
-                    </button>
+                    <Button type="button" onClick={() => signIn('google', {callbackUrl, redirect: true})} className="gap-2">
+                        <i className='bx bxl-google text-[24px]' />Login With Google
+                    </Button>
                 </div>
             </div>
             <p className="">Don{"'"}t have an account? Sign up <Link href={'/auth/register'} className="text-[#23bebe]">here</Link></p>

@@ -1,3 +1,5 @@
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import Link from "next/link"
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
@@ -43,23 +45,11 @@ const RegisterView = () => {
             {error && <p className="text-[#fd3131] mb-2.5">{error}</p>}
             <div className="w-[30%] p-5 mb-5 shadow-[0_0_3px_rgba(0,0,0,0.5)]">
                 <form onSubmit={handleSubmit}>
-                    <div className="flex flex-col my-5 mx-0">
-                        <label htmlFor="email">Email</label>
-                        <input name="email" id="email" type="email" className="p-2.5 bg-[#eee] mt-[5px] border-none outline-none" />
-                    </div>
-                    <div className="flex flex-col my-5 mx-0">
-                        <label htmlFor="fullname">Fullname</label>
-                        <input name="fullname" id="fullname" type="text" className="p-2.5 bg-[#eee] mt-[5px] border-none outline-none" />
-                    </div>
-                    <div className="flex flex-col my-5 mx-0">
-                        <label htmlFor="phone">Phone</label>
-                        <input name="phone" id="phone" type="text" className="p-2.5 bg-[#eee] mt-[5px] border-none outline-none" />
-                    </div>
-                    <div className="flex flex-col my-5 mx-0">
-                        <label htmlFor="password">Password</label>
-                        <input name="password" id="password" type="password" className="p-2.5 bg-[#eee] mt-[5px] border-none outline-none" />
-                    </div>
-                    <button type="submit" className="bg-black text-white w-full p-2.5 border-none">{isLoading ? 'Loading...' : 'Register'}</button>
+                    <Input label="Email" name="email" type="email"  />
+                    <Input label="Fullname" name="fullname" type="text"  />
+                    <Input label="Phone" name="phone" type="number"  />
+                    <Input label="Password" name="password" type="password"  />
+                    <Button type="submit">{isLoading ? 'Loading...' : 'Register'}</Button>
                 </form>
             </div>
             <p className="">Have an account? Sign in <Link href={'/auth/login'} className="text-[#23bebe]">here</Link></p>
