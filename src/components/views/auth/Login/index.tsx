@@ -1,4 +1,5 @@
 
+import AuthLayout from "@/components/layouts/AuthLayout";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import { signIn } from "next-auth/react";
@@ -37,27 +38,22 @@ const LoginView = () => {
             setIsLoading(false);
             setError("Email or password is incorrect");
          }
-    }
+    };
 
     return (
-        <div className="h-[100vh] flex flex-col items-center justify-center w-[100vw]">
-            <h1 className="text-[32px] mt-2.5">Login</h1>
-            {error && <p className="text-[#fd3131] mb-2.5">{error}</p>}
-            <div className="w-[30%] p-5 mb-5 shadow-[0_0_3px_rgba(0,0,0,0.5)]">
-                <form onSubmit={handleSubmit}>
-                    <Input label="Email" name="email" type="email" />
-                    <Input label="Password" name="password" type="password" />
-                    <Button type="submit">{isLoading ? 'Loading...' : 'Login'}</Button>
-                </form>
-                <hr className="my-5" />
-                <div className="w-full">
-                    <Button type="button" onClick={() => signIn('google', {callbackUrl, redirect: true})} className="gap-2">
-                        <i className='bx bxl-google text-[24px]' />Login With Google
+        <AuthLayout title="Login" link="/auth/register" linkText="Don't have an account? Sign up ">
+            <form onSubmit={handleSubmit}>
+                <Input label="Email" name="email" type="email" />
+                <Input label="Password" name="password" type="password" />
+                <Button type="submit">{isLoading ? 'Loading...' : 'Login'}</Button>
+            </form>
+            <hr className="my-5" />
+            <div className="w-full">
+                <Button type="button" onClick={() => signIn('google', {callbackUrl, redirect: true})} className="gap-2">
+                    <i className='bx bxl-google text-[24px]' />Login With Google
                     </Button>
-                </div>
             </div>
-            <p className="">Don{"'"}t have an account? Sign up <Link href={'/auth/register'} className="text-[#23bebe]">here</Link></p>
-        </div>
+        </AuthLayout>
     )
 }
 
