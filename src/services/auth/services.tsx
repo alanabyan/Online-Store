@@ -45,7 +45,7 @@ export async function loginWithGoogle(data: {email: string, role?: string}, call
         callback(user[0]);
     } else {
         data.role = 'member';
-        await addData('user', data, (result: boolean) => {
+        await addData('users', data, (result: boolean) => {
             if (result) {
                 callback(data);
             }

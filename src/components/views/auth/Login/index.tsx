@@ -45,11 +45,11 @@ const LoginView = () => {
             <form onSubmit={handleSubmit}>
                 <Input label="Email" name="email" type="email" />
                 <Input label="Password" name="password" type="password" />
-                <Button type="submit">{isLoading ? 'Loading...' : 'Login'}</Button>
+                <Button className="text-white" type="submit">{isLoading ? 'Loading...' : 'Login'}</Button>
             </form>
             <hr className="my-5" />
             <div className="w-full">
-                <Button type="button" onClick={() => signIn('google', {callbackUrl, redirect: true})} className="gap-2">
+                <Button type="button" onClick={() => signIn('google', {callbackUrl, redirect: true})} className="gap-2 text-white">
                     <i className='bx bxl-google text-[24px]' />Login With Google
                     </Button>
             </div>
