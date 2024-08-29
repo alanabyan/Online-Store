@@ -15,14 +15,19 @@ const listSidebarItem = [
         url: '/admin/products',
         icons: 'bxs-box',
     },
+    {
+        title: 'Users',
+        url: '/admin/users',
+        icons: 'bxs-user-account',
+    },
 ] 
 
 const AdminLayout = (props : PropTypes) => {
     const {children} = props;
     return (
-        <div className="">
+        <div className="flex">
             <Sidebar lists={listSidebarItem} />
-            {children}
+           <div className="w-full py-10 px-14">{children}</div>
         </div>
     )
 };
